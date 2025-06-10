@@ -5,33 +5,41 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
 
+  List names = ["Mitch", "Sharon", "Vince"];
+  void userTapped(){
+    print("User Tapped!");
+  }
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: Colors.deepPurpleAccent[200],
+        backgroundColor: Colors.white,
+        appBar: AppBar(
+          title: Text(
+            "My App Bar",
+            style: TextStyle(fontWeight: FontWeight.w600, color: Colors.white),
+          ),
+          centerTitle: true,
+
+          backgroundColor: Colors.white,
+          elevation: 0,
+          leading: Icon(Icons.menu),
+          actions: [IconButton(onPressed: () {}, icon: Icon(Icons.logout))],
+          iconTheme: IconThemeData(color: Colors.white),
+        ),
         body: Center(
-          child: Container(
-            height: 300,
-            width: 300,
-            // color: Colors.green,
-            decoration: BoxDecoration(
-              color: Colors.deepPurple,
-              borderRadius: BorderRadius.circular(20),
+          child: GestureDetector(
+            onTap: userTapped,
+            child: Container(
+              width: 300,
+              height: 300,
+              color: Colors.pink,
+              child: Center(child: Text("Tap me!")),
             ),
-            padding: EdgeInsets.all(25),
-            child: Text(
-              "Harsh Patel",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
-              ),
           ),
         ),
       ),
